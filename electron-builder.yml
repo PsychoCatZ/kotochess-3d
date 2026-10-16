@@ -1,0 +1,19 @@
+appId: com.kotochess.game
+productName: КотоШахматы 3D
+directories:
+  output: release
+files:
+  - dist/**
+  - electron/**
+  - package.json
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+  artifactName: KotoChess-3D-${version}-x64.${ext}
+nsis:
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  shortcutName: КотоШахматы 3D
+  uninstallDisplayName: КотоШахматы 3D
