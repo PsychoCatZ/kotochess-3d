@@ -1,0 +1,176 @@
+.game-root {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: #101018;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #eee;
+  user-select: none;
+}
+
+.canvas-host {
+  position: absolute;
+  inset: 0;
+}
+
+.canvas-host canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- HUD ---------- */
+.hud-top {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: linear-gradient(180deg, rgba(10,10,16,0.85), rgba(10,10,16,0));
+  pointer-events: none;
+}
+
+.hud-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  text-shadow: 0 1px 3px #000;
+}
+
+.turn {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+  border: 2px solid #666;
+}
+.turn.white { background: #e8e4da; }
+.turn.black { background: #2b2b33; border-color: #999; }
+
+.check-badge {
+  background: #b03030;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 13px;
+  animation: pulse 1s infinite;
+}
+
+.thinking {
+  color: #9ab;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.hud-result {
+  font-size: 20px;
+  color: #ffd75e;
+}
+
+.hud-buttons {
+  display: flex;
+  gap: 8px;
+  pointer-events: auto;
+}
+
+.hud-buttons button, .menu-buttons button, .modal-buttons button, .promo-row button {
+  background: #2a2440;
+  color: #eee;
+  border: 1px solid #4a4068;
+  border-radius: 10px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.hud-buttons button:hover, .menu-buttons button:hover, .modal-buttons button:hover, .promo-row button:hover {
+  background: #3a3260;
+  transform: translateY(-1px);
+}
+button.primary {
+  background: #6a4fd0;
+  border-color: #8a70f0;
+}
+button.primary:hover { background: #7a5fe0; }
+
+/* ---------- история ходов ---------- */
+.move-history {
+  position: absolute;
+  top: 64px;
+  right: 12px;
+  width: 180px;
+  max-height: 55vh;
+  background: rgba(14,14,22,0.75);
+  border: 1px solid #332c4e;
+  border-radius: 12px;
+  padding: 10px 12px;
+  backdrop-filter: blur(4px);
+}
+.mh-title { font-size: 13px; color: #a99; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.mh-list { max-height: 46vh; overflow-y: auto; font-size: 14px; }
+.mh-row { display: grid; grid-template-columns: 26px 1fr 1fr; padding: 2px 0; }
+.mh-num { color: #776; }
+.mh-empty { color: #556; }
+
+/* ---------- меню ---------- */
+.menu-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at center, rgba(20,16,40,0.5), rgba(8,8,14,0.88));
+}
+.menu-card {
+  text-align: center;
+  background: rgba(16,14,28,0.85);
+  border: 1px solid #3a3260;
+  border-radius: 20px;
+  padding: 44px 56px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+  min-width: 340px;
+}
+.game-title {
+  font-size: 42px;
+  margin: 0;
+  letter-spacing: 4px;
+  background: linear-gradient(180deg, #ffe9a0, #d0a040);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 4px 20px rgba(255,200,80,0.15);
+}
+.game-sub { color: #889; margin: 6px 0 28px; }
+.menu-buttons { display: flex; flex-direction: column; gap: 10px; }
+.menu-buttons button { padding: 12px 24px; font-size: 16px; }
+.menu-section { margin-top: 10px; color: #99a; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; }
+.level-row { display: flex; gap: 8px; justify-content: center; }
+.level-row button { flex: 1; }
+.menu-buttons input[type='range'] { width: 100%; accent-color: #6a4fd0; }
+
+/* ---------- модалки ---------- */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5,5,10,0.6);
+  z-index: 10;
+}
+.modal {
+  background: rgba(20,17,34,0.95);
+  border: 1px solid #4a4068;
+  border-radius: 16px;
+  padding: 32px 44px;
+  text-align: center;
+}
+.modal h2 { margin-top: 0; color: #ffd75e; }
+.modal-buttons, .promo-row { display: flex; gap: 10px; justify-content: center; margin-top: 16px; }
+.promo-row button { padding: 12px 20px; font-size: 15px; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
